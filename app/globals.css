@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+:root {
+  /* Professional color palette - deep blues, elegant grays, gold accents */
+  /* WCAG AA compliant colors for accessibility */
+  --color-navy: 20, 33, 61;        /* #14213d - Primary dark blue */
+  --color-slate: 51, 65, 85;       /* #334155 - Secondary gray-blue */
+  --color-gold: 180, 130, 25;      /* #b48219 - Darker gold for better contrast */
+  --color-cream: 250, 248, 245;    /* #faf8f5 - Warm background */
+  --color-charcoal: 31, 41, 55;    /* #1f2937 - Text color */
+  
+  /* Typography scale */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+/* Hardware acceleration for animations */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    will-change: auto;
+  }
+  
+  /* Apply hardware acceleration to animated elements */
+  [class*="transition"],
+  [class*="animate"],
+  [class*="hover:"],
+  [class*="group-hover:"] {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  color: rgb(var(--color-charcoal));
+  background-color: rgb(var(--color-cream));
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
+}
+
+/* Elegant section transitions */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Mobile-specific scroll margin */
+@media (max-width: 768px) {
+  section {
+    scroll-margin-top: 70px;
+  }
+}
+
+/* Professional typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+  color: rgb(var(--color-navy));
+}
+
+/* Smooth transitions for interactive elements - using hardware-accelerated properties */
+a, button {
+  transition: transform 0.3s ease, opacity 0.3s ease, color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Refined hover effects for links */
+a:hover {
+  transform: translateY(-1px);
+}
+
+/* Button hover effects */
+button:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+button:not(:disabled):active {
+  transform: translateY(0);
+}
+
+/* Focus states for accessibility - WCAG AA compliant */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Screen reader only class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Touch-friendly interactive elements on mobile */
+@media (max-width: 768px) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Prevent text size adjustment on orientation change */
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Professional aesthetic enhancements */
+/* Elegant shadows for depth and sophistication */
+.shadow-elegant {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-elegant-lg {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-elegant-xl {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Refined color utilities with WCAG AA compliance */
+.text-navy-900 {
+  color: rgb(20, 33, 61);
+}
+
+.text-navy-600 {
+  color: rgb(51, 65, 85);
+}
+
+.bg-cream-50 {
+  background-color: rgb(250, 248, 245);
+}
+
+.text-gold-600 {
+  color: rgb(180, 130, 25);
+}
+
+.bg-gold-600 {
+  background-color: rgb(180, 130, 25);
+}
+
+.bg-gold-700 {
+  background-color: rgb(150, 108, 20);
+}
+
+.bg-gold-800 {
+  background-color: rgb(120, 86, 16);
+}
+
+.border-gold-500 {
+  border-color: rgb(180, 130, 25);
+}
+
+/* Improved readability and visual hierarchy */
+p {
+  max-width: 75ch; /* Optimal line length for readability */
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  * {
+    border-color: currentColor !important;
+  }
+  
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline-width: 4px;
+  }
+}
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "artist": {
+    "name": "Aishwarya Manikarnike",
+    "tagline": "Veena Virtuoso & Vocalist",
+    "briefBio": "Aishwarya Manikarnike is a renowned Veena musician and vocalist, carrying forward the rich tradition of Carnatic music with grace and innovation.",
+    "fullBio": [
+      "Aishwarya Manikarnike is a distinguished Veena musician and vocalist who has captivated audiences worldwide with her soulful renditions and technical mastery.",
+      "Born into a family of musicians, she began her musical journey at a young age under the guidance of eminent gurus. Her dedication to the art form has earned her numerous accolades and recognition.",
+      "She specializes in both Veena and vocal performances, seamlessly blending traditional Carnatic music with contemporary sensibilities. Her performances are known for their emotional depth and technical precision.",
+      "Aishwarya has performed at prestigious venues across India and internationally, sharing the stage with legendary musicians and contributing to the preservation and promotion of Indian classical music."
+    ]
+  },
+  "home": {
+    "images": {
+      "veena": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&h=600&fit=crop",
+      "vocal": "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&h=600&fit=crop"
+    },
+    "featuredVideos": [
+      "https://www.youtube.com/embed/jfKfPfyJRdk",
+      "https://www.youtube.com/embed/ysz5S6PUM-U",
+      "https://www.youtube.com/embed/2Vv-BfVoq4g"
+    ]
+  },
+  "gallery": {
+    "images": [
+      {
+        "id": "1",
+        "src": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=1200&h=800&fit=crop",
+        "alt": "Veena performance at concert hall",
+        "width": 1200,
+        "height": 800,
+        "caption": "Solo Veena performance at the Music Academy"
+      },
+      {
+        "id": "2",
+        "src": "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=1200&h=800&fit=crop",
+        "alt": "Vocal performance on stage",
+        "width": 1200,
+        "height": 800,
+        "caption": "Carnatic vocal recital"
+      },
+      {
+        "id": "3",
+        "src": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=1200&h=800&fit=crop",
+        "alt": "Traditional concert setting",
+        "width": 1200,
+        "height": 800,
+        "caption": "Traditional concert at temple festival"
+      },
+      {
+        "id": "4",
+        "src": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=800&fit=crop",
+        "alt": "Intimate performance setting",
+        "width": 1200,
+        "height": 800,
+        "caption": "Intimate performance for music enthusiasts"
+      },
+      {
+        "id": "5",
+        "src": "https://images.unsplash.com/photo-1511192336575-5a79af67a629?w=1200&h=800&fit=crop",
+        "alt": "Three generation Veena trio",
+        "width": 1200,
+        "height": 800,
+        "caption": "Three Generation Veena Trio performance"
+      },
+      {
+        "id": "6",
+        "src": "https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?w=1200&h=800&fit=crop",
+        "alt": "International music festival",
+        "width": 1200,
+        "height": 800,
+        "caption": "Performance at international music festival"
+      }
+    ]
+  },
+  "music": {
+    "categories": [
+      {
+        "id": "veena",
+        "name": "Veena",
+        "description": "Classical Veena performances showcasing the depth and beauty of this ancient instrument",
+        "videos": [
+          "https://www.youtube.com/embed/jfKfPfyJRdk",
+          "https://www.youtube.com/embed/ysz5S6PUM-U"
+        ]
+      },
+      {
+        "id": "vocal",
+        "name": "Vocal",
+        "description": "Soulful vocal renditions of classical compositions",
+        "videos": [
+          "https://www.youtube.com/embed/2Vv-BfVoq4g",
+          "https://www.youtube.com/embed/jfKfPfyJRdk"
+        ]
+      },
+      {
+        "id": "trio",
+        "name": "3 Generation Veena Trio",
+        "description": "Unique performances featuring three generations of Veena artists",
+        "videos": [
+          "https://www.youtube.com/embed/ysz5S6PUM-U"
+        ]
+      },
+      {
+        "id": "rtp",
+        "name": "RTP",
+        "description": "Ragam Tanam Pallavi - the pinnacle of Carnatic music improvisation",
+        "videos": [
+          "https://www.youtube.com/embed/2Vv-BfVoq4g"
+        ]
+      }
+    ]
+  },
+  "press": {
+    "articles": [
+      {
+        "title": "Rising Star in Carnatic Music",
+        "publication": "The Hindu",
+        "date": "2024-01-15",
+        "url": "https://example.com/article1",
+        "excerpt": "Aishwarya Manikarnike's recent performance at the Music Academy showcased her exceptional talent and deep understanding of classical music.",
+        "imageUrl": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=400&h=300&fit=crop"
+      },
+      {
+        "title": "Preserving Tradition with Innovation",
+        "publication": "Deccan Chronicle",
+        "date": "2023-11-20",
+        "url": "https://example.com/article2",
+        "excerpt": "In an exclusive interview, Aishwarya discusses her approach to balancing traditional values with contemporary expression."
+      },
+      {
+        "title": "Award-Winning Performance",
+        "publication": "Times of India",
+        "date": "2023-09-10",
+        "url": "https://example.com/article3",
+        "excerpt": "Aishwarya Manikarnike receives prestigious award for her contribution to Carnatic music.",
+        "imageUrl": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&h=300&fit=crop"
+      }
+    ]
+  },
+  "faq": {
+    "items": [
+      {
+        "question": "What styles of music do you perform?",
+        "answer": "I specialize in Carnatic classical music, performing both on the Veena and as a vocalist. My repertoire includes traditional compositions, ragam tanam pallavi, and devotional music."
+      },
+      {
+        "question": "Do you offer music lessons?",
+        "answer": "Yes, I offer private lessons for both Veena and Carnatic vocal music. Lessons are available both in-person and online. Please contact me for more details about availability and scheduling."
+      },
+      {
+        "question": "How can I book you for a performance?",
+        "answer": "For performance bookings, please use the contact form on this website or reach out via email. I perform at concerts, festivals, private events, and cultural programs."
+      },
+      {
+        "question": "What is the 3 Generation Veena Trio?",
+        "answer": "The 3 Generation Veena Trio is a unique ensemble featuring three generations of Veena artists from my family. This rare collaboration showcases the continuity and evolution of the Veena tradition across generations."
+      },
+      {
+        "question": "Where can I listen to your music?",
+        "answer": "You can find my performances on YouTube, and recordings are available on major music streaming platforms. Check the Music section of this website for featured videos."
+      }
+    ]
+  },
+  "socialMedia": {
+    "youtube": "https://www.youtube.com/@aishwaryamanikarnike",
+    "facebook": "https://www.facebook.com/aishwaryamanikarnike",
+    "instagram": "https://www.instagram.com/aishwaryamanikarnike",
+    "twitter": "https://twitter.com/aishwaryaveena"
+  }
+}
