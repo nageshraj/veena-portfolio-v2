@@ -1,26 +1,36 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Static export for GitHub Pages
+  output: 'export',
+  
+  // Base path - set this to your repo name if deploying to username.github.io/repo-name
+  // Leave empty string if deploying to username.github.io
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '/veena-portfolio-v2',
+  
+  // Asset prefix for GitHub Pages
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '/veena-portfolio-v2',
+  
+  // Trailing slash for GitHub Pages compatibility
+  trailingSlash: true,
+  
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
-    formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Disable image optimization for static export
+    unoptimized: true,
   },
+  
   // Enable compiler optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? {
       exclude: ['error', 'warn'],
     } : false,
   },
+  
   // Optimize production builds
   swcMinify: true,
+  
   // Enable React strict mode for better development experience
   reactStrictMode: true,
+  
   // Optimize bundle size
   experimental: {
     optimizePackageImports: ['framer-motion', 'react-icons'],

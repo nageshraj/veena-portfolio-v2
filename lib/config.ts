@@ -127,10 +127,14 @@ export async function loadConfig(
   configPath: string = '/config/site-config.json'
 ): Promise<SiteConfig> {
   try {
-    const response = await fetch(configPath);
+    // Handle base path for GitHub Pages deployment
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+    const fullPath = `${basePath}${configPath}`;
+    
+    const response = await fetch(fullPath);
     
     if (!response.ok) {
-      console.error(`Failed to load configuration: ${response.statusText}`);
+      console.error(`Failed to load configuration from ${fullPath}: ${response.statusText}`);
       return defaultConfig;
     }
 
