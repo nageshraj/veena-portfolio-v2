@@ -44,7 +44,7 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-white" aria-label="About">
+    <section id="about" className="px-4 sm:px-6 md:px-8" aria-label="About">
       <div id="about-section" className="max-w-5xl mx-auto">
         {/* Section Title */}
         <motion.div

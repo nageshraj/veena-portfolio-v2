@@ -56,7 +56,7 @@ export default function Music() {
   );
 
   return (
-    <section id="music" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-white" aria-label="Music">
+    <section id="music" className="px-4 sm:px-6 md:px-8" aria-label="Music">
       <div id="music-section" className="max-w-7xl mx-auto">
         {/* Section Title */}
         <motion.div

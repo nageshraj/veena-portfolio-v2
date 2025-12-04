@@ -45,7 +45,7 @@ export default function Press() {
   }
 
   return (
-    <section id="press" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8" aria-label="Press and recognition">
+    <section id="press" className="px-4 sm:px-6 md:px-8" aria-label="Press and recognition">
       <div id="press-section" className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div

@@ -5,7 +5,7 @@ import ContactForm from '@/components/features/ContactForm';
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-gradient-to-b from-white to-gray-50" aria-label="Contact">
+    <section id="contact" className="px-4 sm:px-6 md:px-8" aria-label="Contact">
       <div id="contact-section" className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

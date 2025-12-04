@@ -51,7 +51,7 @@ export default function Home() {
   };
 
   return (
-    <section id="home" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-cream-50" aria-label="Home">
+    <section id="home" className="px-4 sm:px-6 md:px-8" aria-label="Home">
       <div id="home-section" className="max-w-7xl mx-auto">
         {/* Hero Title */}
         <motion.div

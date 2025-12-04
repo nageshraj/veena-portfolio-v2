@@ -45,7 +45,7 @@ export default function Gallery() {
   }
 
   return (
-    <section id="gallery" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-white" aria-label="Performance gallery">
+    <section id="gallery" className="px-4 sm:px-6 md:px-8" aria-label="Performance gallery">
       <div id="gallery-section" className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div

@@ -51,7 +51,7 @@ export default function FAQ() {
   }
 
   return (
-    <section id="faq" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-cream-50" aria-label="Frequently asked questions">
+    <section id="faq" className="px-4 sm:px-6 md:px-8" aria-label="Frequently asked questions">
       <div id="faq-section" className="max-w-4xl mx-auto">
         {/* Section Title */}
         <motion.div

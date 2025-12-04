@@ -83,7 +83,7 @@ export default function Page() {
       role="main"
     >
       {/* Home Section - Hero with full viewport presence */}
-      <div className="pt-16 sm:pt-18 md:pt-20">
+      <div className="pt-28 pb-12 sm:pt-32 sm:pb-16 md:pt-40 md:pb-20 bg-cream-50">
         <SectionErrorBoundary sectionName="Home">
           <HomeSection />
         </SectionErrorBoundary>
@@ -97,7 +97,7 @@ export default function Page() {
       </div>
 
       {/* Gallery Section - Subtle background variation */}
-      <div className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-gray-50">
+      <div className="py-12 sm:py-16 md:py-20 bg-cream-50">
         <SectionErrorBoundary sectionName="Gallery">
           <Gallery />
         </SectionErrorBoundary>
@@ -111,7 +111,7 @@ export default function Page() {
       </div>
 
       {/* Press Section - Sophisticated gray tone */}
-      <div className="py-12 sm:py-16 md:py-20 bg-gray-50">
+      <div className="py-12 sm:py-16 md:py-20 bg-cream-50">
         <SectionErrorBoundary sectionName="Press">
           <Press />
         </SectionErrorBoundary>
@@ -125,7 +125,7 @@ export default function Page() {
       </div>
 
       {/* Contact Section - Elegant navy accent background */}
-      <div className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-white to-slate-50">
+      <div className="py-12 sm:py-16 md:py-20 bg-cream-50">
         <SectionErrorBoundary sectionName="Contact">
           <Contact />
         </SectionErrorBoundary>
