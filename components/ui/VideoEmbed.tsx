@@ -35,7 +35,7 @@ export default function VideoEmbed({
     if (attempts < retryCount) {
       setIsRetrying(true);
       setAttempts(prev => prev + 1);
-      
+
       setTimeout(() => {
         setVideoSrc(`${src}${src.includes('?') ? '&' : '?'}retry=${attempts + 1}`);
         setHasError(false);
@@ -55,7 +55,7 @@ export default function VideoEmbed({
       /(?:youtube\.com\/embed\/|youtube\.com\/watch\?v=|youtu\.be\/)([^&?/]+)/,
       /youtube\.com\/v\/([^&?/]+)/,
     ];
-    
+
     for (const pattern of patterns) {
       const match = url.match(pattern);
       if (match) return match[1];
@@ -76,7 +76,7 @@ export default function VideoEmbed({
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className={`relative w-full bg-gray-100 rounded-lg overflow-hidden ${className}`}
+        className={`relative w-full bg-gray-100 rounded-lg overflow-hidden border border-premium ${className}`}
         style={{ paddingBottom: '56.25%' }}
       >
         <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
@@ -102,7 +102,7 @@ export default function VideoEmbed({
               <button
                 onClick={handleRetry}
                 disabled={isRetrying}
-                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-sm font-medium disabled:bg-gray-400"
+                className="px-4 py-2 bg-navy-900 text-white rounded-md hover:bg-navy-800 active:bg-navy-950 transition-all duration-300 text-sm font-medium disabled:bg-gray-400 shadow-premium"
               >
                 {isRetrying ? 'Retrying...' : 'Retry'}
               </button>

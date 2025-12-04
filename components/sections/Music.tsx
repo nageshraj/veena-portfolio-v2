@@ -98,10 +98,9 @@ export default function Music() {
                 className={`
                   px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg font-medium 
                   transition-all duration-300 text-sm sm:text-base touch-manipulation
-                  ${
-                    selectedCategory === category.id
-                      ? 'bg-blue-600 text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200 active:bg-gray-300 hover:shadow-md'
+                  ${selectedCategory === category.id
+                    ? 'bg-navy-900 text-white shadow-premium-md border border-navy-800'
+                    : 'bg-white text-gray-700 hover:bg-gray-50 active:bg-gray-100 shadow-premium border border-premium hover:shadow-premium-md'
                   }
                 `}
                 role="tab"
@@ -153,7 +152,7 @@ export default function Music() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                  className="rounded-lg overflow-hidden shadow-elegant-lg hover:shadow-elegant-xl transition-shadow duration-300"
+                  className="rounded-lg overflow-hidden shadow-premium-lg hover:shadow-premium-xl border border-premium transition-all duration-300"
                 >
                   <VideoEmbed
                     src={videoUrl}

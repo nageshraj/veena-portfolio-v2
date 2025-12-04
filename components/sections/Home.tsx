@@ -63,6 +63,8 @@ export default function Home() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-navy-900 mb-3 md:mb-4 px-4">
             {config.artist.name}
           </h1>
+          {/* Premium gold accent underline */}
+          <div className="w-24 sm:w-32 h-1 bg-gradient-gold mx-auto mb-3 md:mb-4 rounded-full"></div>
           <p className="text-lg sm:text-xl md:text-2xl text-navy-600 font-light px-4" role="doc-subtitle">
             {config.artist.tagline}
           </p>
@@ -74,7 +76,7 @@ export default function Home() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative w-full h-[300px] sm:h-[350px] md:h-[450px] lg:h-[500px] rounded-lg overflow-hidden shadow-elegant-lg group"
+            className="relative w-full h-[300px] sm:h-[350px] md:h-[450px] lg:h-[500px] rounded-lg overflow-hidden shadow-premium-lg border border-premium group"
           >
             <ImageWithFallback
               src={config.home.images.veena}
@@ -91,7 +93,7 @@ export default function Home() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative w-full h-[300px] sm:h-[350px] md:h-[450px] lg:h-[500px] rounded-lg overflow-hidden shadow-elegant-lg group"
+            className="relative w-full h-[300px] sm:h-[350px] md:h-[450px] lg:h-[500px] rounded-lg overflow-hidden shadow-premium-lg border border-premium group"
           >
             <ImageWithFallback
               src={config.home.images.vocal}
@@ -122,7 +124,7 @@ export default function Home() {
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-            className="inline-block px-6 sm:px-8 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 active:bg-blue-800 transition-colors duration-300 font-medium shadow-lg hover:shadow-xl text-sm sm:text-base touch-manipulation"
+            className="inline-block px-6 sm:px-8 py-3 bg-navy-900 text-white rounded-md hover:bg-navy-800 active:bg-navy-950 transition-all duration-300 font-medium shadow-premium-md hover:shadow-premium-lg text-sm sm:text-base touch-manipulation"
           >
             Read More About {config.artist.name.split(' ')[0]}
           </motion.a>
@@ -148,7 +150,7 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.2 + index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
                   whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                  className="rounded-lg overflow-hidden shadow-elegant-lg hover:shadow-elegant-xl transition-shadow duration-300"
+                  className="rounded-lg overflow-hidden shadow-premium-lg hover:shadow-premium-xl border border-premium transition-all duration-300"
                 >
                   <VideoEmbed
                     src={videoUrl}

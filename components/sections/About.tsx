@@ -57,7 +57,7 @@ export default function About() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-navy-900 mb-3 md:mb-4 px-4">
             About {config.artist.name.split(' ')[0]}
           </h2>
-          <div className="w-20 sm:w-24 h-1 bg-gold-500 mx-auto"></div>
+          <div className="w-24 sm:w-28 h-1 bg-gradient-gold mx-auto rounded-full"></div>
         </motion.div>
 
         {/* Biography Subsections */}
@@ -77,7 +77,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-10 sm:mt-12 md:mt-16 p-6 sm:p-7 md:p-8 bg-cream-50 rounded-lg shadow-elegant"
+          className="mt-10 sm:mt-12 md:mt-16 p-6 sm:p-7 md:p-8 bg-white rounded-lg shadow-premium-lg border border-premium"
           role="complementary"
           aria-label="Musical excellence highlights"
         >

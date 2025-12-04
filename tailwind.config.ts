@@ -21,18 +21,20 @@ const config: Config = {
           700: '#334e68',
           800: '#243b53',
           900: '#14213d',
+          950: '#0a1428', // Deepest navy for premium accents
         },
+        // Refined gold palette for sophisticated luxury
         gold: {
           50: '#fefce8',
           100: '#fef9c3',
           200: '#fef08a',
           300: '#fde047',
           400: '#facc15',
-          500: '#d4af37',
-          600: '#ca8a04',
-          700: '#a16207',
-          800: '#854d0e',
-          900: '#713f12',
+          500: '#b8860b', // DarkGoldenrod - more sophisticated
+          600: '#9d7209', // Deeper, richer gold
+          700: '#826008', // Refined darker shade
+          800: '#6b4f06', // Premium deep gold
+          900: '#4a3604', // Luxurious darkest gold
         },
         slate: {
           50: '#f8fafc',
@@ -57,6 +59,20 @@ const config: Config = {
           700: '#b0a08a',
           800: '#8f7f6d',
           900: '#6f6355',
+        },
+        // Elegant charcoal for quiet luxury
+        charcoal: {
+          50: '#fafafa',
+          100: '#f5f5f5',
+          200: '#e5e5e5',
+          300: '#d4d4d4',
+          400: '#a3a3a3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#1f2937',
+          900: '#111827',
+          950: '#030712',
         },
       },
       fontFamily: {
@@ -98,9 +114,15 @@ const config: Config = {
         },
       },
       boxShadow: {
+        // Legacy elegant shadows (maintain compatibility)
         'elegant': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
         'elegant-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04)',
         'elegant-xl': '0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        // Premium shadows for quiet luxury
+        'premium': '0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02)',
+        'premium-md': '0 4px 8px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.03)',
+        'premium-lg': '0 12px 24px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04)',
+        'premium-xl': '0 20px 40px rgba(0, 0, 0, 0.10), 0 8px 16px rgba(0, 0, 0, 0.06)',
       },
     },
   },

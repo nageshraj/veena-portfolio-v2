@@ -57,11 +57,11 @@ export default function ContactForm() {
           retries: 2,
         }
       );
-      
+
       setSubmitStatus('success');
       setLastSubmitTime(now);
       reset();
-      
+
       // Reset success message after 5 seconds
       setTimeout(() => {
         setSubmitStatus('idle');
@@ -69,7 +69,7 @@ export default function ContactForm() {
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitStatus('error');
-      
+
       // Set user-friendly error message based on error type
       if (error instanceof Error) {
         if (error.message.includes('timeout')) {
@@ -101,9 +101,8 @@ export default function ContactForm() {
             id="name"
             type="text"
             {...register('name')}
-            className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-sm sm:text-base ${
-              errors.name ? 'border-red-500' : 'border-gray-300'
-            }`}
+            className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-transparent transition-all text-sm sm:text-base ${errors.name ? 'border-red-500' : 'border-gray-300'
+              }`}
             placeholder="Your full name"
             disabled={isSubmitting}
             aria-required="true"
@@ -132,9 +131,8 @@ export default function ContactForm() {
             id="phone"
             type="tel"
             {...register('phone')}
-            className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-sm sm:text-base ${
-              errors.phone ? 'border-red-500' : 'border-gray-300'
-            }`}
+            className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-transparent transition-all text-sm sm:text-base ${errors.phone ? 'border-red-500' : 'border-gray-300'
+              }`}
             placeholder="+1 (555) 123-4567"
             disabled={isSubmitting}
             aria-required="true"
@@ -163,9 +161,8 @@ export default function ContactForm() {
             id="email"
             type="email"
             {...register('email')}
-            className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-sm sm:text-base ${
-              errors.email ? 'border-red-500' : 'border-gray-300'
-            }`}
+            className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-transparent transition-all text-sm sm:text-base ${errors.email ? 'border-red-500' : 'border-gray-300'
+              }`}
             placeholder="your.email@example.com"
             disabled={isSubmitting}
             aria-required="true"
@@ -194,9 +191,8 @@ export default function ContactForm() {
             id="purpose"
             {...register('purpose')}
             rows={5}
-            className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-sm sm:text-base ${
-              errors.purpose ? 'border-red-500' : 'border-gray-300'
-            }`}
+            className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-transparent transition-all resize-none text-sm sm:text-base ${errors.purpose ? 'border-red-500' : 'border-gray-300'
+              }`}
             placeholder="Please describe your inquiry, booking request, or collaboration opportunity..."
             disabled={isSubmitting}
             aria-required="true"
@@ -224,11 +220,10 @@ export default function ContactForm() {
             whileHover={!isSubmitting ? { scale: 1.02, y: -2 } : {}}
             whileTap={!isSubmitting ? { scale: 0.98 } : {}}
             transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-            className={`w-full py-3 sm:py-4 px-5 sm:px-6 rounded-lg font-medium text-white transition-all duration-300 text-sm sm:text-base touch-manipulation ${
-              isSubmitting
+            className={`w-full py-3 sm:py-4 px-5 sm:px-6 rounded-lg font-medium text-white transition-all duration-300 text-sm sm:text-base touch-manipulation shadow-premium-md ${isSubmitting
                 ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-700 active:bg-blue-800 hover:shadow-lg'
-            }`}
+                : 'bg-navy-900 hover:bg-navy-800 active:bg-navy-950 hover:shadow-premium-lg'
+              }`}
           >
             {isSubmitting ? (
               <span className="flex items-center justify-center">

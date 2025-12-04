@@ -30,7 +30,7 @@ export default function Footer() {
   const socialMedia = config?.socialMedia || {};
 
   return (
-    <footer className="bg-gray-900 text-white py-8 sm:py-10 md:py-12" role="contentinfo">
+    <footer className="bg-gradient-navy text-white py-8 sm:py-10 md:py-12 border-t border-premium" role="contentinfo">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <div className="flex flex-col items-center space-y-5 sm:space-y-6">
           {/* Social Media Icons */}
