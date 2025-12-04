@@ -128,7 +128,7 @@ export default function PortfolioGenerator() {
             transition={{ duration: 0.3 }}
             className="text-xs sm:text-sm text-gray-600 text-center max-w-md"
           >
-            Click the button above to open the print dialog. You can save as PDF from your browser's print menu.
+            Click the button above to open the print dialog. You can save as PDF from your browser&apos;s print menu.
           </motion.p>
         )}
       </AnimatePresence>
