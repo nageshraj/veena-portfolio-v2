@@ -10,50 +10,311 @@ export interface PDFGenerationResult {
   error?: string;
 }
 
+// Color palette (using RGB to avoid oklch issues)
+const COLORS = {
+  navy: { r: 20, g: 33, b: 61 },      // #14213d
+  gold: { r: 184, g: 134, b: 11 },    // #b8860b
+  cream: { r: 250, g: 248, b: 245 },  // #faf8f5
+  gray: { r: 107, g: 114, b: 128 },   // #6b7280
+  white: { r: 255, g: 255, b: 255 },
+};
+
 /**
- * Generates a PDF portfolio using the browser's print functionality
- * This avoids html2canvas and its oklch/oklab compatibility issues
+ * Generates a professional portfolio PDF from the website's config data
  */
 export async function generatePDF(
   options: PDFGenerationOptions = {}
 ): Promise<PDFGenerationResult> {
-  const { onProgress } = options;
+  const { onProgress, includeLinks = true } = options;
 
   try {
+    onProgress?.(5);
+
+    // Load config data
+    const response = await fetch('/config/site-config.json');
+    if (!response.ok) {
+      throw new Error('Failed to load site configuration');
+    }
+    const config = await response.json();
+
     onProgress?.(10);
 
-    // Show print-optimized view
-    document.body.classList.add('print-mode');
+    // Create PDF
+    const pdf = new jsPDF({
+      orientation: 'portrait',
+      unit: 'mm',
+      format: 'a4',
+    });
+
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    const margin = 20;
+    const contentWidth = pageWidth - (margin * 2);
+
+    let currentY = margin;
+
+    // Helper functions
+    const addHeader = (text: string, size: number = 20) => {
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(size);
+      pdf.setTextColor(COLORS.navy.r, COLORS.navy.g, COLORS.navy.b);
+      pdf.text(text, margin, currentY);
+      currentY += size * 0.5;
+    };
+
+    const addSubheader = (text: string, size: number = 14) => {
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(size);
+      pdf.setTextColor(COLORS.navy.r, COLORS.navy.g, COLORS.navy.b);
+      pdf.text(text, margin, currentY);
+      currentY += size * 0.5;
+    };
+
+    const addText = (text: string, size: number = 11) => {
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(size);
+      pdf.setTextColor(COLORS.gray.r, COLORS.gray.g, COLORS.gray.b);
+      const lines = pdf.splitTextToSize(text, contentWidth);
+      pdf.text(lines, margin, currentY);
+      currentY += (lines.length * size * 0.4) + 3;
+    };
+
+    const addLink = (text: string, url: string, size: number = 11) => {
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(size);
+      pdf.setTextColor(0, 102, 204); // Blue for links
+
+      // Use text() instead of textWithLink() to avoid spacing issues
+      pdf.text(text, margin, currentY);
+
+      // Add clickable link area if links are enabled
+      if (includeLinks) {
+        const textWidth = pdf.getTextWidth(text);
+        pdf.link(margin, currentY - size * 0.7, textWidth, size, { url });
+      }
+
+      currentY += size * 0.5;
+    };
+
+    const addSpace = (space: number = 5) => {
+      currentY += space;
+    };
+
+    const checkPageBreak = (neededSpace: number = 40) => {
+      if (currentY + neededSpace > pageHeight - margin) {
+        pdf.addPage();
+        currentY = margin;
+        return true;
+      }
+      return false;
+    };
+
+    const loadImage = async (url: string): Promise<string | null> => {
+      try {
+        const response = await fetch(url);
+        const blob = await response.blob();
+        return new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.onerror = () => resolve(null);
+          reader.readAsDataURL(blob);
+        });
+      } catch {
+        return null;
+      }
+    };
+
+    // ===== PAGE 1: HOME + ABOUT =====
+    onProgress?.(20);
+
+    // Title
+    pdf.setFont('times', 'bold');
+    pdf.setFontSize(28);
+    pdf.setTextColor(COLORS.navy.r, COLORS.navy.g, COLORS.navy.b);
+    pdf.text(config.artist.name, pageWidth / 2, currentY, { align: 'center' });
+    currentY += 10;
+
+    // Tagline
+    pdf.setFont('helvetica', 'italic');
+    pdf.setFontSize(14);
+    pdf.setTextColor(COLORS.gray.r, COLORS.gray.g, COLORS.gray.b);
+    pdf.text(config.artist.tagline, pageWidth / 2, currentY, { align: 'center' });
+    currentY += 15;
+
+    // Load and add home images
+    const imgWidth = (contentWidth - 10) / 2;
+    const imgHeight = imgWidth * 0.75;
+
+    const veenaImg = await loadImage(config.home.images.veena);
+    const vocalImg = await loadImage(config.home.images.vocal);
+
+    if (veenaImg) {
+      pdf.addImage(veenaImg, 'JPEG', margin, currentY, imgWidth, imgHeight);
+    }
+    if (vocalImg) {
+      pdf.addImage(vocalImg, 'JPEG', margin + imgWidth + 10, currentY, imgWidth, imgHeight);
+    }
+    currentY += imgHeight + 10;
 
     onProgress?.(30);
 
-    // Create a promise that resolves when user finishes printing
-    await new Promise<void>((resolve) => {
-      // Set up print event listeners
-      const afterPrint = () => {
-        window.removeEventListener('afterprint', afterPrint);
-        resolve();
-      };
+    // Brief bio
+    addText(config.artist.briefBio, 12);
+    addSpace(10);
 
-      window.addEventListener('afterprint', afterPrint);
-
-      onProgress?.(50);
-
-      // Trigger print dialog
-      setTimeout(() => {
-        window.print();
-      }, 100);
+    // About section
+    addHeader('About', 18);
+    addSpace(5);
+    config.artist.fullBio.forEach((paragraph: string) => {
+      addText(paragraph);
+      addSpace(3);
     });
 
-    // Clean up
-    document.body.classList.remove('print-mode');
+    onProgress?.(40);
+
+    // ===== PAGE 2: GALLERY =====
+    pdf.addPage();
+    currentY = margin;
+
+    addHeader('Performance Gallery', 20);
+    addSpace(10);
+
+    // Load gallery images
+    const galleryImages = config.gallery.images.slice(0, 6); // Limit to 6 images
+    const galleryImgWidth = (contentWidth - 10) / 2;
+    const galleryImgHeight = galleryImgWidth * 0.67;
+
+    for (let i = 0; i < galleryImages.length; i += 2) {
+      checkPageBreak(galleryImgHeight + 20);
+
+      const img1 = await loadImage(galleryImages[i].src);
+      if (img1) {
+        pdf.addImage(img1, 'JPEG', margin, currentY, galleryImgWidth, galleryImgHeight);
+        pdf.setFontSize(9);
+        pdf.setTextColor(COLORS.gray.r, COLORS.gray.g, COLORS.gray.b);
+        pdf.text(galleryImages[i].caption, margin, currentY + galleryImgHeight + 4);
+      }
+
+      if (i + 1 < galleryImages.length) {
+        const img2 = await loadImage(galleryImages[i + 1].src);
+        if (img2) {
+          pdf.addImage(img2, 'JPEG', margin + galleryImgWidth + 10, currentY, galleryImgWidth, galleryImgHeight);
+          pdf.setFontSize(9);
+          pdf.setTextColor(COLORS.gray.r, COLORS.gray.g, COLORS.gray.b);
+          pdf.text(galleryImages[i + 1].caption, margin + galleryImgWidth + 10, currentY + galleryImgHeight + 4);
+        }
+      }
+
+      currentY += galleryImgHeight + 15;
+    }
+
+    onProgress?.(60);
+
+    // ===== PAGE 3: MUSIC =====
+    pdf.addPage();
+    currentY = margin;
+
+    addHeader('Music', 20);
+    addSpace(10);
+
+    config.music.categories.forEach((category: any, catIndex: number) => {
+      checkPageBreak();
+      addSubheader(category.name, 14);
+      addText(category.description, 10);
+
+      category.videos.forEach((video: any, vidIndex: number) => {
+        // Extract video ID from embed URL
+        const videoId = video.url.split('/').pop() || '';
+        const youtubeLink = `https://www.youtube.com/watch?v=${videoId}`;
+        addLink(video.title, youtubeLink, 10);
+      });
+
+      addSpace(8);
+    });
+
+    onProgress?.(75);
+
+    // ===== PAGE 4: PRESS =====
+    pdf.addPage();
+    currentY = margin;
+
+    addHeader('Press & Recognition', 20);
+    addSpace(10);
+
+    config.press.articles.forEach((article: any) => {
+      checkPageBreak();
+      addSubheader(article.title, 13);
+      pdf.setFontSize(10);
+      pdf.setFont('helvetica', 'italic');
+      pdf.setTextColor(COLORS.gray.r, COLORS.gray.g, COLORS.gray.b);
+      pdf.text(`${article.publication} - ${new Date(article.date).toLocaleDateString()}`, margin, currentY);
+      currentY += 6;
+
+      addText(article.excerpt, 10);
+      addLink(article.title, article.url, 10);
+      addSpace(8);
+    });
+
+    onProgress?.(85);
+
+    // ===== PAGE 5: FAQ =====
+    checkPageBreak(60);
+    if (currentY > margin + 20) {
+      pdf.addPage();
+      currentY = margin;
+    }
+
+    addHeader('Frequently Asked Questions', 20);
+    addSpace(10);
+
+    config.faq.items.forEach((item: any, index: number) => {
+      checkPageBreak();
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(11);
+      pdf.setTextColor(COLORS.navy.r, COLORS.navy.g, COLORS.navy.b);
+      const qLines = pdf.splitTextToSize(`Q${index + 1}: ${item.question}`, contentWidth);
+      pdf.text(qLines, margin, currentY);
+      currentY += (qLines.length * 11 * 0.4) + 3;
+
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(10);
+      pdf.setTextColor(COLORS.gray.r, COLORS.gray.g, COLORS.gray.b);
+      const aLines = pdf.splitTextToSize(`A: ${item.answer}`, contentWidth);
+      pdf.text(aLines, margin, currentY);
+      currentY += (aLines.length * 10 * 0.4) + 8;
+    });
+
+    onProgress?.(95);
+
+    // Add footer to all pages
+    const totalPages = pdf.getNumberOfPages();
+    for (let i = 1; i <= totalPages; i++) {
+      pdf.setPage(i);
+      pdf.setFontSize(9);
+      pdf.setTextColor(COLORS.gray.r, COLORS.gray.g, COLORS.gray.b);
+      pdf.text(
+        `${config.artist.name} - Portfolio`,
+        pageWidth / 2,
+        pageHeight - 10,
+        { align: 'center' }
+      );
+      pdf.text(
+        `Page ${i} of ${totalPages}`,
+        pageWidth - margin,
+        pageHeight - 10,
+        { align: 'right' }
+      );
+    }
+
+    // Download the PDF
+    const fileName = `${config.artist.name.replace(/\s+/g, '_')}_Portfolio_${new Date().toISOString().split('T')[0]}.pdf`;
+    pdf.save(fileName);
 
     onProgress?.(100);
 
     return { success: true };
   } catch (error) {
     console.error('PDF generation error:', error);
-    document.body.classList.remove('print-mode');
 
     return {
       success: false,

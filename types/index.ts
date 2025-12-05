@@ -35,11 +35,16 @@ export interface SiteConfig {
   };
 }
 
+export interface MusicVideo {
+  title: string;
+  url: string;
+}
+
 export interface MusicCategory {
   id: string;
   name: string;
   description: string;
-  videos: string[];
+  videos: MusicVideo[];
 }
 
 export interface PressArticle {

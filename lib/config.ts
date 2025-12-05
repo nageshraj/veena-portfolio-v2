@@ -2,11 +2,16 @@ import { z } from 'zod';
 import type { SiteConfig } from '@/types';
 
 // Zod schemas for validation
+const MusicVideoSchema = z.object({
+  title: z.string().min(1),
+  url: z.string().url(),
+});
+
 const MusicCategorySchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
   description: z.string(),
-  videos: z.array(z.string().url()),
+  videos: z.array(MusicVideoSchema),
 });
 
 const PressArticleSchema = z.object({
@@ -129,13 +134,13 @@ function getBasePath(): string {
     // Client-side: check if we're on GitHub Pages
     const hostname = window.location.hostname;
     const pathname = window.location.pathname;
-    
+
     // If we're on GitHub Pages and not at root, extract base path
     if (hostname.includes('github.io') && pathname.startsWith('/veena-portfolio-v2')) {
       return '/veena-portfolio-v2';
     }
   }
-  
+
   // Default to environment variable or empty string
   return process.env.NEXT_PUBLIC_BASE_PATH || '';
 }
@@ -152,11 +157,11 @@ export async function loadConfig(
     // Handle base path for GitHub Pages deployment
     const basePath = getBasePath();
     const fullPath = `${basePath}${configPath}`;
-    
+
     console.log(`Loading config from: ${fullPath}`);
-    
+
     const response = await fetch(fullPath);
-    
+
     if (!response.ok) {
       console.error(`Failed to load configuration from ${fullPath}: ${response.statusText}`);
       return defaultConfig;

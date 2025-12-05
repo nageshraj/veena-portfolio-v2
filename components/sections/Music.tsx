@@ -146,7 +146,7 @@ export default function Music() {
               id={`category-panel-${currentCategory.id}`}
               aria-label={`${currentCategory.name} videos`}
             >
-              {currentCategory.videos.map((videoUrl, index) => (
+              {currentCategory.videos.map((video, index) => (
                 <motion.div
                   key={`${currentCategory.id}-${index}`}
                   initial={{ opacity: 0, y: 20 }}
@@ -156,8 +156,8 @@ export default function Music() {
                   className="rounded-lg overflow-hidden shadow-premium-lg hover:shadow-premium-xl border border-premium transition-all duration-300"
                 >
                   <VideoEmbed
-                    src={videoUrl}
-                    title={`${currentCategory.name} video ${index + 1}`}
+                    src={video.url}
+                    title={video.title}
                     retryCount={2}
                   />
                 </motion.div>

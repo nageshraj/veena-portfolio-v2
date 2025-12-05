@@ -62,8 +62,8 @@ export default function PortfolioGenerator() {
         ) : (
           <>
             <FaDownload className="text-lg sm:text-xl" />
-            <span className="hidden sm:inline">Print Portfolio</span>
-            <span className="sm:hidden">Print</span>
+            <span className="hidden sm:inline">Download Portfolio PDF</span>
+            <span className="sm:hidden">Download PDF</span>
             <FaFilePdf className="text-lg sm:text-xl" />
           </>
         )}
@@ -128,7 +128,7 @@ export default function PortfolioGenerator() {
             transition={{ duration: 0.3 }}
             className="text-xs sm:text-sm text-gray-600 text-center max-w-md"
           >
-            Click the button above to open the print dialog. You can save as PDF from your browser&apos;s print menu.
+            Click the button above to generate and download a professional portfolio PDF with all your content, images, and links.
           </motion.p>
         )}
       </AnimatePresence>

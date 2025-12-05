@@ -80,8 +80,14 @@
         "name": "Veena",
         "description": "Classical Veena performances showcasing the depth and beauty of this ancient instrument",
         "videos": [
-          "https://www.youtube.com/embed/jfKfPfyJRdk",
-          "https://www.youtube.com/embed/ysz5S6PUM-U"
+          {
+            "title": "Veena Recital - Raga Kalyani",
+            "url": "https://www.youtube.com/embed/jfKfPfyJRdk"
+          },
+          {
+            "title": "Veena Performance - Traditional Composition",
+            "url": "https://www.youtube.com/embed/ysz5S6PUM-U"
+          }
         ]
       },
       {
@@ -89,8 +95,14 @@
         "name": "Vocal",
         "description": "Soulful vocal renditions of classical compositions",
         "videos": [
-          "https://www.youtube.com/embed/2Vv-BfVoq4g",
-          "https://www.youtube.com/embed/jfKfPfyJRdk"
+          {
+            "title": "Vocal Performance - Carnatic Classical",
+            "url": "https://www.youtube.com/embed/2Vv-BfVoq4g"
+          },
+          {
+            "title": "Vocal Recital - Devotional Songs",
+            "url": "https://www.youtube.com/embed/jfKfPfyJRdk"
+          }
         ]
       },
       {
@@ -98,7 +110,10 @@
         "name": "3 Generation Veena Trio",
         "description": "Unique performances featuring three generations of Veena artists",
         "videos": [
-          "https://www.youtube.com/embed/ysz5S6PUM-U"
+          {
+            "title": "Three Generation Veena Trio Performance",
+            "url": "https://www.youtube.com/embed/ysz5S6PUM-U"
+          }
         ]
       },
       {
@@ -106,7 +121,10 @@
         "name": "RTP",
         "description": "Ragam Tanam Pallavi - the pinnacle of Carnatic music improvisation",
         "videos": [
-          "https://www.youtube.com/embed/2Vv-BfVoq4g"
+          {
+            "title": "Ragam Tanam Pallavi - Advanced Improvisation",
+            "url": "https://www.youtube.com/embed/2Vv-BfVoq4g"
+          }
         ]
       }
     ]

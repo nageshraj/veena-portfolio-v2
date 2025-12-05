@@ -132,7 +132,7 @@ export default function Page() {
       </div>
 
       {/* Portfolio Download Section */}
-      <div className="py-12 sm:py-14 md:py-16 bg-white border-t border-gray-200">
+      <div id="pdf-generator-section" className="py-12 sm:py-14 md:py-16 bg-white border-t border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
