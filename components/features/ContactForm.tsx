@@ -133,7 +133,7 @@ export default function ContactForm() {
             {...register('phone')}
             className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-transparent transition-all text-sm sm:text-base ${errors.phone ? 'border-red-500' : 'border-gray-300'
               }`}
-            placeholder="+1 (555) 123-4567"
+            placeholder="+91 9876543210"
             disabled={isSubmitting}
             aria-required="true"
             aria-invalid={errors.phone ? 'true' : 'false'}
@@ -221,9 +221,10 @@ export default function ContactForm() {
             whileTap={!isSubmitting ? { scale: 0.98 } : {}}
             transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             className={`w-full py-3 sm:py-4 px-5 sm:px-6 rounded-lg font-medium text-white transition-all duration-300 text-sm sm:text-base touch-manipulation shadow-premium-md ${isSubmitting
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-navy-900 hover:bg-navy-800 active:bg-navy-950 hover:shadow-premium-lg'
+              ? 'bg-gray-400 cursor-not-allowed'
+              : 'bg-navy-900 hover:bg-navy-800 active:bg-navy-950 hover:shadow-premium-lg'
               }`}
+            style={!isSubmitting ? { backgroundColor: '#14213d', color: '#ffffff' } : { backgroundColor: '#9ca3af', color: '#ffffff' }}
           >
             {isSubmitting ? (
               <span className="flex items-center justify-center">
